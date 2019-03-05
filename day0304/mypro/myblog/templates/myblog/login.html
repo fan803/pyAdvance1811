@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录页面</title>
+</head>
+<body>
+    <center>
+    <div style="">
+    <form action="/myblog/login/" method="post">
+            {% csrf_token %}
+        姓名： <input   type="text" name="name" placeholder="用户名/手机号" /><br>
+
+
+        <img src="/myblog/createImage/" alt="图片有问题" onclick="refresh_check_code(this)" width="150" height="60"><br>
+        <input type="submit" value="立即登录">
+    </form>
+    </div>
+    </center>
+    <script>
+     function refresh_check_code(node) {
+     // src 后面加问号会自动刷新验证码 img 的 src
+    // get 请求方式缓存处理
+     node.src = '/myblog/createImage/?search=' + Math.random();
+     }
+</script>
+
+</body>
+</html>
