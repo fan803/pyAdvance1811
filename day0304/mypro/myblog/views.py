@@ -1,13 +1,19 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect,reverse
 from django.http import HttpResponse
+from django.http import JsonResponse
 from django.template import loader
-from django.shortcuts import redirect
 from io import BytesIO
 from .import utils
+from django.db import transaction
+from django.views.decorators.csrf import csrf_exempt
+from django.forms.models import model_to_dict
+
 # Create your views here.
 from .import models
+from . import forms
 
 
+@csrf_exempt
 def index(req):
     '''
     第一种插入方法
@@ -23,7 +29,7 @@ def index(req):
     # temp = loader.get_template('myblog/index.html')
     # return HttpResponse(temp.render({'msg':'123'},req))
     # u = models.Users.object.get(id=2)
-    return render(req,'myblog/index.html',{'msg':'123'})
+    return render(req,'myblog/index.html',{'msg':'《沁园春·雪》'})
 
 def login(req):
     if req.method == 'GET':
@@ -36,15 +42,41 @@ def login(req):
         except:
             return render(req,'myblog/login.html')
 
+@transaction.atomic
 def register(req):
     if req.method == 'GET':
-        return render(req, 'myblog/register.html')
+        userform = forms.UserForm
+
+        return render(req, 'myblog/register.html',{'userform':userform})
     elif req.method == 'POST':
+        '''
+        form = forms.UserForm(req.POST)
+        print(form.data)
+        print(form.data['name'])
+        '''
         name = req.POST.get('name')
         age = req.POST.get('age')
-        u = models.Users(name=name,age=age)
-        u.save()
-        return HttpResponse('注册成功')
+        #获取文件
+        avater = req.FILES.get('avater')
+        #拼接上传路径
+        path = 'static/image/'+ avater.name
+        #以流的方式打开上传
+        with open(path,'wb') as file:
+        #分片写入
+            for i in avater.chunks():
+                file.write(i)
+
+        print(name,age,avater)
+        # 设置还原点
+        s_id = transaction.savepoint()
+        try:
+            u=models.Users(name=name,age=age,avater=path)
+            u.save()
+            transaction.savepoint_commit(s_id)
+            return HttpResponse('注册成功')
+        except:
+            transaction.savepoint_rollback(s_id)
+            return HttpResponse('注册失败')
 
 def addArticle(req):
     if req.method == 'GET':
@@ -66,3 +98,18 @@ def createImage(req):
     imge.save(b,'png')
     req.session['code'] = code
     return HttpResponse(b.getbuffer())
+
+
+def hello(req):
+    print(req.session.get('code'))
+
+    return HttpResponse('<h1>jspodjawoprjw</h>')
+
+
+@csrf_exempt
+def jsontest(req):
+    if req.method == 'POST':
+        u = models.Users.objects.filter(pk=1)[0]
+        print(u)
+        u = model_to_dict(u)
+        return JsonResponse(u)

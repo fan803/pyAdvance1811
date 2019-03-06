@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>发布文章</title>
+</head>
+<body>
+<center>
+    <form action="/myblog/addaritcle/" method="post">
+        {% csrf_token %}
+        标题：<input type="text" name="name" placeholder="用户名/手机号"/><br>
+        内容：<textarea name="" id="" rows="15" cols="35"></textarea>
+        <input type="submit" value="发布">
+    </form>
+</center>
+</body>
+</html>

@@ -13,7 +13,9 @@ class Users(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=20)
     age = models.IntegerField(10)
-    um = Usermanager()
+    # um = Usermanager()
+    avater = models.CharField(max_length=255,default="static/myblog/img/dl_01.png")
+    # password = models.
 
 '''
     @classmethod

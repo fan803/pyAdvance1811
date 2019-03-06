@@ -1,6 +1,3 @@
-# class NPC(AI):
-#     pass
-
 def renameattribute(classname, parentclass, attributedic):
     newattribute = {}
     for key, value in attributedic.items():

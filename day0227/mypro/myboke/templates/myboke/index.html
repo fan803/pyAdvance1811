@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>博客首页</title>
+</head>
+
+<body>
+<center>
+    <h1>博客{% block title %}首页{% endblock %}</h1>
+
+    <!--<img src="/static/myboke/image/f3.jpg" alt="boy">-->
+    {% load static %}
+    <img src="{%static 'myboke/image/f3.jpg' %}" alt="boy">
+    <h3>{{msg}}上山打老虎</h3>
+
+    <a href="/myboke/login/">登录</a>
+    <a href="/myboke/register/">注册</a>
+    <a href="/myboke/addaritcle/">发布文章</a>
+</center>
+
+</body>
+</html>

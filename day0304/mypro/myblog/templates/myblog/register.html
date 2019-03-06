@@ -5,12 +5,15 @@
     <title>注册页面</title>
 </head>
 <body>
-     <form action="/myblog/register/" method="post">
+     <form action="/myblog/register/" method="post" enctype="multipart/form-data">
+           {# {{userform.as_ul}} #}
             {% csrf_token %}
 
             姓名： <input   type="text" name="name" placeholder="用户名" /><br>
 
             年龄： <input   type="text" name="age" placeholder="年龄" /><br>
+
+            头像：<input   type="file" name="avater" id="avater" /><br>
 
             <input type="submit" value="立即注册">
 

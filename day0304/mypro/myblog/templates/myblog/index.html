@@ -5,15 +5,43 @@
     <title>博客首页</title>
 </head>
 <body>
+    <center>
     <h1>博客首页</h1>
     <div style="">
     {{user.name}}
-    <img src="/static/myblog/dl_01.png" alt="出错了">
-    <img src="/static/image/dl_01.png" alt="出错了">
-    {{msg}}千里冰封
+    <img src="/static/myblog/dl_01.png" alt="出错了"><br>
+    {#<img src="/static/image/dl_01.png" alt="出错了">#}
+        <h1>{{msg}}<br></h1>
+        <h3>
+        北国风光，千里冰封，万里雪飘。望长城内外，惟余莽莽，<br>
+        大河上下，顿失滔滔。山舞银蛇，原驰蜡象，欲与天公试比高。<br>
+        须晴日，看红装素裹，分外妖娆。 江山如此多娇，引无数英雄竞折腰。<br>
+        惜秦皇汉武，略输文采；唐宗宋祖，稍逊风骚。一代天骄，成吉思汗，<br>
+        只识弯弓射大雕。俱往矣，数风流人物，还看今朝。<br>
+       </h3>
+    <h2>
     <a href="/myblog/login/">登录</a>
     <a href="/myblog/register/">注册</a>
     <a href="/myboke/addaritcle/">发布</a>
+    </h2>
     </div>
+    <button id="user">按钮</button>
+    </center>
+    <script src="/static/js/lib/jquery/jquery-1.12.4.js"></script>
+    <script>
+        $(function(){
+            $('#user').click(function(){
+                <!--alert('bhjm')-->
+                $.ajax({
+                   type:'POST',
+                   dataType:'JSON',
+                   url:'/myblog/jsontest/',
+                   success:function(data){
+                        alert('bhjm')
+                    }
+                       })
+                })
+        })
+    </script>
 </body>
 </html>
