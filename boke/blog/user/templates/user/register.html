@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+<link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- -->
+<script>var __links = document.querySelectorAll('a');function __linkClick(e) { parent.window.postMessage(this.href, '*');} ;for (var i = 0, l = __links.length; i < l; i++) {if ( __links[i].getAttribute('data-t') == '_blank' ) { __links[i].addEventListener('click', __linkClick, false);}}</script>
+<script src="/static/js/jquery.min.js"></script>
+<script>$(document).ready(function(c) {
+	$('.alert-close').on('click', function(c){
+		$('.message').fadeOut('slow', function(c){
+	  		$('.message').remove();
+		});
+	});
+});
+</script>
+</head>
+<body>
+<!-- contact-form -->
+<div class="message warning">
+<div class="inset">
+	<div class="login-head">
+		<h1>Login Form</h1>
+		 <div class="alert-close"> </div>
+	</div>
+		<form action="/user/register/" method="post">
+			{% csrf_token %}
+			<li>
+				<input type="text" class="text" name="name" placeholder="姓名" ><a href="#" class=" icon user"></a>
+			</li>
+			<li>
+				<input type="text" class="text" name="account" placeholder="账户/id" ><a href="#" class=" icon user"></a>
+			</li>
+				<div class="clear"> </div>
+			<li>
+				<input type="text" class="text" name="age" placeholder="年龄" ><a href="#" class=" icon user"></a>
+			</li>
+			<li>
+				<input type="text" class="text" name="phone" placeholder="电话" ><a href="#" class=" icon user"></a>
+			</li>
+			<li>
+				<input type="text" class="text" name="addr" placeholder="地址" ><a href="#" class=" icon user"></a>
+			</li>
+			{% if users.gender == '男' %}
+            <input type="radio" name="gender" placeholder="username" value='男' checked > 男
+            <input type="radio" name="gender" placeholder="username" value='女'>女
+            {% else %}
+            <input type="radio" name="gender" placeholder="username" value='男'>男
+            <input type="radio" name="gender" placeholder="username" value='女' checked>女
+            {% endif %}
+			<div class="clear"> </div>
+			<div class="submit">
+				<input type="submit" onclick="myFunction()" value="注册" >
+				<h4><a href="#">慎重注册 ?</a></h4>
+						  <div class="clear">  </div>
+			</div>
+
+		</form>
+		</div>
+	</div>
+	</div>
+	<div class="clear"> </div>
+<!--- footer --->
+<div class="footer">
+	<p>版权 &copy; 违者必究.</p>
+</div>
+<script>
+     function refresh_check_code(node) {
+     // src 后面加问号会自动刷新验证码 img 的 src
+    // get 请求方式缓存处理
+     node.src = '/user/createImg/?search=' + Math.random();
+     }
+</script>
+</body>
+</html>
