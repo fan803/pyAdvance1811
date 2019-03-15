@@ -3,16 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <title>首页</title>
+    <style>
+        *{
+        margin:0;
+        padding:0;
+        }
+        ul,ol{
+        list-style:none;
+        }
+        .nav{
+        height:50px;
+        width:1300px;
+        }
+        .nav ul > li{
+        height:50px;
+        width:145px;
+        float:left;
+        }
+        .type2{
+        display:none;
+        }
+        .layer{
+            width:1320px;
+            height:400px;
+
+        }
+        .goods{
+            width:250px;
+            height:400px;
+            border:1px solid #CCCCCC;
+            margin:6px;
+            border-redius:3px;
+            float:left;
+        }
+        .goods > .good-img > img{
+            width:250px;
+            height:285px;
+
+        }
+        .jz{
+        text-align:center;
+        }
+    </style>
 </head>
 <body>
-    <h1>项目首页</h1>
-    <h2>{{msg}}</h2>
-    <h4><a href="/">网站首页</a></h4>
-    <h4><a href="{% url 'users:user_login' %}">用户登录</a></h4>
-    <h4><a href="{% url 'users:register' %}">用户注册</a></h4>
-    <h4><a href="{% url 'users:user_logout' %}">用户退出</a></h4>
-    <h4><a href="{% url 'users:userinfo' %}">查看用户资料</a></h4>
-    <h4><a href="{% url 'store:add1' %}">用户开店</a></h4>
-    <h4><a href="{% url 'store:list' %}">查看自己所有店铺</a></h4>
+   <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;烧饼淘购</h1>
+        &nbsp;<br>
+        &nbsp;<br>
+    <div class="nav">
+        <ul style="height:50px;width:1300px;">
+            <li>&nbsp;<br></li>
+            <li><a href="/">网站首页</a></li>
+            <li><a href="{% url 'users:user_login' %}">用户登录</a></li>
+            <li><a href="{% url 'users:register' %}">用户注册</a></li>
+            <li><a href="{% url 'users:user_logout' %}">用户退出</a></li>
+            <li><a href="{% url 'users:userinfo' %}">查看用户资料</a></li>
+            <li><a href="{% url 'store:add' %}">用户开店</a></li>
+            <li><a href="{% url 'store:list' %}">查看自己所有店铺</a></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+        &nbsp;<br>
+        &nbsp;<br>
+        &nbsp;<br>
+   <hr>
+   <div style="margin-left:200px;">
+   <h2>商品列表</h2>
+    <ul >
+    {% for type in allGoodsType %}
+        <li>
+            <span>{{type.name}}</span>
+            <ul class="type2">
+                 {% for type2 in type.goodstype_set.all %}
+                <li>{{type2.name}}</li>
+                {% endfor %}
+            </ul>
+        </li>
+    {% empty %}
+    <p>当前没有商品类型，请添加</p>
+
+    {% endfor %}
+    </ul>
+   </div>
+<hr>
+   <div class="jz">
+      <div class="layer">
+       <h3>女装 / 男装 / 内衣</h3>
+        {% for goods in goods1_list %}
+
+             <div class="goods">
+                <div class="good-img">
+                    <img src="/{{goods.goodsimage_set.all.first.path}}" alt="图片有问题">
+                </div>
+                <div class="goods-name">
+                    {{goods.name}}|{{goods.goodstype.name}}=={{goods.goodstype.parent.name}}
+                </div>
+                <div class="goods-intro">
+                    {{goods.intro}}
+                </div>
+                <div class="goods-price">
+                    单价{{goods.price}}  |  销量{{goods.count}}
+                </div>
+                <div class="goods-sale">
+                    <a href="{% url 'goods:detail' goods.id %}">商品详情</a>
+                    <a href="#">加入购物车</a>
+                </div>
+            </div>
+        {% endfor %}
+   </div>
+    <div class="layer">
+       <h3>家电 / 数码 / 手机</h3>
+        {% for goods in goods2_list %}
+
+             <div class="goods">
+                <div class="good-img">
+                    <img src="/{{goods.goodsimage_set.all.first.path}}" alt="图片有问题">
+                </div>
+                <div class="goods-name">
+                    {{goods.name}}|{{goods.goodstype.name}}=={{goods.goodstype.parent.name}}
+                </div>
+                <div class="goods-intro">
+                    {{goods.intro}}
+                </div>
+                <div class="goods-price">
+                    单价{{goods.price}}  |  销量{{goods.count}}
+                </div>
+                <div class="goods-sale">
+                    <a href="{% url 'goods:detail' goods.id %}">商品详情</a>
+                    <a href="#">加入购物车</a>
+                </div>
+            </div>
+        {% endfor %}
+   </div>
+   &nbsp;<br>
+    <div class="layer">
+       <h3>鞋靴 / 箱包 / 配件</h3>
+        {% for goods in goods3_list %}
+
+             <div class="goods">
+                <div class="good-img">
+                    <img src="/{{goods.goodsimage_set.all.first.path}}" alt="图片有问题">
+                </div>
+                <div class="goods-name">
+                    {{goods.name}}|{{goods.goodstype.name}}=={{goods.goodstype.parent.name}}
+                </div>
+                <div class="goods-intro">
+                    {{goods.intro}}
+                </div>
+                <div class="goods-price">
+                    单价{{goods.price}}  |  销量{{goods.count}}
+                </div>
+                <div class="goods-sale">
+                    <a href="{% url 'goods:detail' goods.id %}">商品详情</a>
+                    <a href="#">加入购物车</a>
+                </div>
+            </div>
+        {% endfor %}
+   </div>
+    &nbsp;<br>
+   </div>
+
 </body>
 </html>

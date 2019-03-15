@@ -19,6 +19,8 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^users/', include("users.urls",namespace="users")),
     url(r'^store/', include("store.urls",namespace="store")),
+    url(r'^goods/', include("goods.urls",namespace="goods")),
+    url(r'^shopcart/', include("shopcart.urls",namespace="shopcart")),
     url(r'^', include("commons.urls",namespace="commons")),
     url(r'^admin/', admin.site.urls),
 ]

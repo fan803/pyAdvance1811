@@ -30,8 +30,8 @@ def user_login(req):
             user=authenticate(username=username,password=password)
             if user is not None:
                 if user.is_active:
-                    #将验证通过的用户信息保存在req,  req,user返回用户名
-                   login(req,user)
+                    # 将验证通过的用户信息保存在req,  req,user返回用户名
+                   login(req, user)
                    # return redirect(next_url)
                    return render(req,'users/userInfo.html',{'user':user})
                 else:
@@ -84,6 +84,7 @@ def user_logout(req):
 
 @login_required
 def userinfo(req):
+    print(req.user.userinfo.header)
     return render(req, "users/userInfo.html", {})
 
 def createImage(req):

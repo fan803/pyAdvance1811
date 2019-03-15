@@ -3,12 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <title>用户信息</title>
+     <style>
+
+        *{
+        margin:0;
+        padding:0;
+        }
+        ul,ol{
+        list-style:none;
+        }
+        .nav, .nav ul{
+        height:50px;
+        width:1300px;
+        }
+        .nav ul > li{
+        height:50px;
+        width:145px;
+        float:left;
+        }
+    </style>
 </head>
 <body>
+
+    <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;烧饼淘购</h1>
+    &nbsp;<br>
+    &nbsp;<br>
+    &nbsp;<br>
+    <div class="nav">
+        <ul>
+            <li>&nbsp;<br></li>
+            <li><a href="/">网站首页</a></li>
+            <li><a href="{% url 'users:user_login' %}">用户登录</a></li>
+            <li><a href="{% url 'users:register' %}">用户注册</a></li>
+            <li><a href="{% url 'users:user_logout' %}">用户退出</a></li>
+            <li><a href="{% url 'users:userinfo' %}">查看用户资料</a></li>
+            <li><a href="{% url 'store:add' %}">用户开店</a></li>
+            <li><a href="{% url 'store:list' %}">查看自己所有店铺</a></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+<hr>
+
     <table>
         <tr>
             <td>用户头像</td>
-            <td><img src="/{{req.user.userinfo.headers}}" alt="头像有问题"></td>
+            <td><img src="/{{request.user.userinfo.header}}" alt="头像有问题"></td>
         </tr>
         <tr>
             <td>用户名称</td>

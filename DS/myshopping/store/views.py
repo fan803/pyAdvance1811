@@ -1,11 +1,10 @@
 from django.shortcuts import render,redirect,reverse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_GET
-
+from goods.models import GoodsType,Goods
 from . import models
 
 
-@require_GET
 @login_required
 def add(req):
     if req.method == "GET":
@@ -33,7 +32,6 @@ def list(req):
 
 
 
-@require_GET
 @login_required
 def update(req,s_id):
     if req.method == "GET":
@@ -43,11 +41,12 @@ def update(req,s_id):
         name = req.POST['name'].strip()
         intro = req.POST['intro'].strip()
         try:
-            cover = req.POST['cover']
+            cover = req.FILES['cover']
+            print(cover)
             store = models.Store(name=name,intro=intro,cover=cover,user=req.user)
         except:
             store = models.Store(name=name, intro=intro, user=req.user)
-            store.save()
+        store.save()
 
         return redirect(reverse("store:detail",kwargs={'s_id':store.id}))
 
@@ -58,14 +57,18 @@ def update(req,s_id):
 @login_required
 def detail(req,s_id):
     store = models.Store.objects.get(pk=s_id)
-    return render(req,'store/detail.html',{'store':store})
+    type1 = GoodsType.objects.filter(parent__isnull=True)
+
+    goods = Goods.objects.filter(store=store)
+
+    return render(req,'store/detail.html',{'store':store,'type1':type1,'goods':goods})
 
 
 @require_GET
 @login_required
-def change(req,s_id,status):
+def change(req,s_id,change):
    store = models.Store.objects.get(id=s_id)
-   store.status = int(status)
+   store.status = int(change)
    store.save()
    if store.status == 2:
        return redirect(reverse("store:list"))
