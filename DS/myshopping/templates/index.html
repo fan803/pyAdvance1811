@@ -3,166 +3,916 @@
 <head>
     <meta charset="UTF-8">
     <title>首页</title>
-    <style>
-        *{
-        margin:0;
-        padding:0;
-        }
-        ul,ol{
-        list-style:none;
-        }
-        .nav{
-        height:50px;
-        width:1300px;
-        }
-        .nav ul > li{
-        height:50px;
-        width:145px;
-        float:left;
-        }
-        .type2{
-        display:none;
-        }
-        .layer{
-            width:1320px;
-            height:400px;
-
-        }
-        .goods{
-            width:250px;
-            height:400px;
-            border:1px solid #CCCCCC;
-            margin:6px;
-            border-redius:3px;
-            float:left;
-        }
-        .goods > .good-img > img{
-            width:250px;
-            height:285px;
-
-        }
-        .jz{
-        text-align:center;
-        }
-    </style>
+    <script src="/static/js/lib\jquery/jquery-1.12.4.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/js/lib/css/index.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/js/lib/css/style.css"/>
+    <script type="text/javascript" src='/static/js/lib/js/jquery.js'></script>
+    <script type="text/javascript" src='/static/js/lib/js/index.js'></script>
+    <script type="text/javascript" src="/static/js/lib/js/jquery.cookie.js" ></script>
+    <script type="text/javascript" src="/static/js/lib/js/shopcart.js" ></script>
+    <script type="text/javascript" src="/static/js/lib/js/car.js"></script>
+    <link rel="stylesheet" href="/static/js/lib/css/iconfont.css"/>
 </head>
 <body>
-   <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;烧饼淘购</h1>
-        &nbsp;<br>
-        &nbsp;<br>
+    <div id="top">
+			<div class="wrap">
+				<div class="top-left">
+					<div class="top-left-show">
+						网站导航<span></span>
+					</div>
+					<div class="top-left-hide">
+						<span>百联集团官网</span>
+						<span>安付宝网</span>
+						<span>第一医药</span>
+						<span>ok会员卡专区</span>
+					</div>
+				</div>
+				<div class="top-right">
+					<ul>
+						<li>
+							<div class="top-right-show">
+								<a href="{% url 'shopcart:list' %}">购物车</a>
+							</div>
+						</li><span>|</span>
+						<li>
+							<div class="top-right-show">
+								掌上百联<span class="crow"></span>
+								<div class="top-right-show-1">
+									<img src="/static/images/index/2-d.jpg">
+								</div>
+							</div>
+						</li><span>|</span>
+						<li>
+							<div class="top-right-show">
+								客户服务<span class="crow"></span>
+								<div class="top-right-show-2">
+									<span >在线客服</span>
+									<span >帮助中心</span>
+								</div>
+							</div>
+						</li><span>|</span>
+						<li>
+							<div class="top-right-show">
+								充值缴费<span class="crow"></span>
+								<div class="top-right-show-3" >
+									<dl>
+										<dt>水煤电缴费</dt>
+										<dd>缴费首页</dd>
+										<dd>水费缴费</dd>
+										<dd>电费缴费</dd>
+
+									</dl>
+									<dl>
+										<dt>手机充值</dt>
+										<dd>话费充值</dd>
+										<dd>流量充值</dd>
+										<dd>更多充值</dd>
+									</dl>
+									<dl style='border-right:none'>
+										<dt>游戏点卡</dt>
+										<dd>腾讯Q币充值</dd>
+										<dd>盛大点券充值</dd>
+										<dd>其他充值</dd>
+									</dl>
+								</div>
+							</div>
+						</li><span>|</span>
+						<li>
+							<div class="top-right-show">
+								我的百联<span class="crow"></span>
+								<div class="top-right-show-2">
+									<span > 我的订单</span>
+									<span > 我的评价</span>
+									<span > 我的积分</span>
+									<span > 我的收藏</span>
+								</div>
+							</div>
+						</li><span>|</span>
+						<li>
+							<div class="top-right-show">
+								我的订单
+							</div>
+						</li><span>|</span>
+						<li>
+							<div class="top-right-show">
+							<i></i>	<a class="login">请登录</a> <a href="{% url 'users:register' %}">注册</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+    <div class="header">
+			<div class="wrap">
+				<div class="header-logo">
+					<a><img src="/static/images/index/header-logo.png" title="logo" alt="烧饼"/></a>
+				</div>
+				<div class="header-logo2">
+					<a><img src="/static/images/index/header-logo2.jpg" /></a>
+				</div>
+				<div class="header-search">
+					<div class="header-search-top">
+						<div class="header-search-input"><input class='sinput' placeholder="搜索您感兴趣的东西" type="text" data-value="搜索:"/></a></div>
+						<a href="html/search.html"><div class="header-search-top-p"></div></a>
+						<ul class="header-search-ul">
+						</ul>
+					</div>
+					<div class="header-search-bt">
+						<p><a href="#">特色中国</a><span>|</span>
+							<a href="#">嘉娜宝</a><span>|</span>
+							<a href="#">尤妮佳</a><span>|</span>
+							<a href="#">瑰柏翠</a><span>|</span>
+							<a href="#">拉杆箱</a><span>|</span>
+							<a href="#">洗衣液</a><span>|</span>
+							<a href="#">克里斯汀</a><span>|</span>
+							<a href="#">乔家栅</a><span>|</span>
+							<a href="#">SK-II</a></p>
+					</div>
+				<!--	<ul class="header-search-ul">
+					</ul>	-->
+				</div>
+			</div>
+		</div>
+
     <div class="nav">
-        <ul style="height:50px;width:1300px;">
-            <li>&nbsp;<br></li>
-            <li><a href="/">网站首页</a></li>
-            <li><a href="{% url 'users:user_login' %}">用户登录</a></li>
-            <li><a href="{% url 'users:register' %}">用户注册</a></li>
-            <li><a href="{% url 'users:user_logout' %}">用户退出</a></li>
-            <li><a href="{% url 'users:userinfo' %}">查看用户资料</a></li>
-            <li><a href="{% url 'store:add' %}">用户开店</a></li>
-            <li><a href="{% url 'store:list' %}">查看自己所有店铺</a></li>
-            <li></li>
-            <li></li>
-        </ul>
-    </div>
-        &nbsp;<br>
-        &nbsp;<br>
-        &nbsp;<br>
-   <hr>
-   <div style="margin-left:200px;">
-   <h2>商品列表</h2>
-    <ul >
-    {% for type in allGoodsType %}
-        <li>
-            <span>{{type.name}}</span>
-            <ul class="type2">
-                 {% for type2 in type.goodstype_set.all %}
-                <li>{{type2.name}}</li>
-                {% endfor %}
-            </ul>
-        </li>
-    {% empty %}
-    <p>当前没有商品类型，请添加</p>
+			<div class="wrap">
+				<div class="nav-left">
+					<i></i>
+					<span>所有产品分类</span>
+				</div>
+				<ul class="nav-right">
+					<li><a href="#">首页</a><span></span></li>
+					<li><a href="#">生活日用</a><span></span></li>
+					<li><a href="#">24H百货</a><span></span></li>
+					<li><a href="#">全球购</a><span></span></li>
+					<li><a href="#"><img src="/static/images/index/nav-gif.gif"/></a><span></span></li>
+					<li><a href="#">电器城</a><span></span></li>
+					<li><a href="#">奥莱代购</a><span></span></li>
+				</ul>
+				<img src="/static/images/index/kdj_car.gif" class="kdj_car1"/>
+			</div>
+		</div>
 
-    {% endfor %}
-    </ul>
-   </div>
-<hr>
-   <div class="jz">
-      <div class="layer">
-       <h3>女装 / 男装 / 内衣</h3>
-        {% for goods in goods1_list %}
+    <div class="banner">
+			<div class="banner-left">
+				<ul class="banner-left-lists">
+					<li><i class="banner-left-1"></i><a>烧饼进口</a><a>全球购</a>
+						<div class="banner-left-cont">
+							<div class="cont-box-container">
+							<div class="cont-box">
+								<p class="banner-left-cont-tit">进口休闲零食\进口糖果巧克力</p>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+							</div>
+							<div class="cont-box">
+								<p class="banner-left-cont-tit">进口休闲零食\进口糖果巧克力</p>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+							</div>
+							<div class="cont-box">
+								<p class="banner-left-cont-tit">进口休闲零食\进口糖果巧克力</p>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
 
-             <div class="goods">
-                <div class="good-img">
-                    <img src="/{{goods.goodsimage_set.all.first.path}}" alt="图片有问题">
-                </div>
-                <div class="goods-name">
-                    {{goods.name}}|{{goods.goodstype.name}}=={{goods.goodstype.parent.name}}
-                </div>
-                <div class="goods-intro">
-                    {{goods.intro}}
-                </div>
-                <div class="goods-price">
-                    单价{{goods.price}}  |  销量{{goods.count}}
-                </div>
-                <div class="goods-sale">
-                    <a href="{% url 'goods:detail' goods.id %}">商品详情</a>
-                    <a href="#">加入购物车</a>
-                </div>
-            </div>
-        {% endfor %}
-   </div>
-    <div class="layer">
-       <h3>家电 / 数码 / 手机</h3>
-        {% for goods in goods2_list %}
+							</div>
+							<div class="cont-box">
+								<p class="banner-left-cont-tit">进口休闲零食\进口糖果巧克力</p>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+							</div>
+							<div class="cont-box">
+								<p class="banner-left-cont-tit">进口休闲零食\进口糖果巧克力</p>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+							</div>
+							</div>
+							<div class="img-cont">
+							<img src="static/images/index/banner-left1.jpg"/>
+							<img src="static/images/index/banner-left2.jpg"/>
+							</div>
+						</div>
+					</li>
+					<li><i class="banner-left-2"></i><a>生鲜食品</a>
+						<div class="banner-left-cont">
+							<div class="cont-box-container">
+							<div class="cont-box">
+								<p class="banner-left-cont-tit">新鲜水果\水果随心订</p>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+							</div>
+							<div class="cont-box">
+								<p class="banner-left-cont-tit">海鲜\水类</p>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+							</div>
+							<div class="cont-box">
+								<p class="banner-left-cont-tit">进口休闲零食\进口糖果巧克力</p>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
 
-             <div class="goods">
-                <div class="good-img">
-                    <img src="/{{goods.goodsimage_set.all.first.path}}" alt="图片有问题">
-                </div>
-                <div class="goods-name">
-                    {{goods.name}}|{{goods.goodstype.name}}=={{goods.goodstype.parent.name}}
-                </div>
-                <div class="goods-intro">
-                    {{goods.intro}}
-                </div>
-                <div class="goods-price">
-                    单价{{goods.price}}  |  销量{{goods.count}}
-                </div>
-                <div class="goods-sale">
-                    <a href="{% url 'goods:detail' goods.id %}">商品详情</a>
-                    <a href="#">加入购物车</a>
-                </div>
-            </div>
-        {% endfor %}
-   </div>
-   &nbsp;<br>
-    <div class="layer">
-       <h3>鞋靴 / 箱包 / 配件</h3>
-        {% for goods in goods3_list %}
+							</div>
+							<div class="cont-box">
+								<p class="banner-left-cont-tit">进口休闲零食\进口糖果巧克力</p>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+							</div>
+							<div class="cont-box">
+								<p class="banner-left-cont-tit">进口休闲零食\进口糖果巧克力</p>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+								<a href="#">膨化食品</a><span>|</span>
+							</div>
+							</div>
+							<div class="img-cont">
+							<img src="static/images/index/banner-left1.jpg"/>
+							<img src="static/images/index/banner-left2.jpg"/>
+							</div>
+						</div>
+					</li>
+					<li><i class="banner-left-3"></i><a>食品</a><a>酒饮</a><a>粮油</a></li>
+					<li><i class="banner-left-4"></i><a>美容护理</a></li>
+					<li><i class="banner-left-5"></i><a>母婴</a><a>玩具</a></li>
+					<li><i class="banner-left-6"></i><a>餐厨用具</a><a>家居家装</a></li>
+					<li><i class="banner-left-7"></i><a>家清</a><a>纸品</a><a>一次性</a></li>
+					<li><i class="banner-left-8"></i><a>女装</a><a>男装</a></li>
+					<li><i class="banner-left-9"></i><a>鞋靴箱包</a><a>珠宝饰品</a></li>
+					<li><i class="banner-left-10"></i><a>手机数码</a><a>电脑办公</a></li>
+					<li><i class="banner-left-11"></i><a>家用电器</a></li>
+					<li><i class="banner-left-12"></i><a>运动户外</a><a>汽车用品</a></li>
+					<li><i class="banner-left-13"></i><a>营养滋补</a><a>保健器械</a></li>
+					<li><i class="banner-left-14"></i><a>礼品卡</a><a>充值</a><a>图书</a></li>
+				</ul>
 
-             <div class="goods">
-                <div class="good-img">
-                    <img src="/{{goods.goodsimage_set.all.first.path}}" alt="图片有问题">
-                </div>
-                <div class="goods-name">
-                    {{goods.name}}|{{goods.goodstype.name}}=={{goods.goodstype.parent.name}}
-                </div>
-                <div class="goods-intro">
-                    {{goods.intro}}
-                </div>
-                <div class="goods-price">
-                    单价{{goods.price}}  |  销量{{goods.count}}
-                </div>
-                <div class="goods-sale">
-                    <a href="{% url 'goods:detail' goods.id %}">商品详情</a>
-                    <a href="#">加入购物车</a>
-                </div>
-            </div>
-        {% endfor %}
-   </div>
-    &nbsp;<br>
-   </div>
+			</div>
+			<div class="banner-cont">
+				<a href="html/cakestyle.html"><img src="static/images/index/banner1.jpg" style="opacity: 1;filter:alpha(opacity=100);"/></a>
+				<p class="p-btn"><span class="btn-left"><</span>
+					<span class="btn-right">></span>
+				</p>
+				<ul class="btn-lists">
+					<li class="active"></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
 
+			</div>
+			<div class="banner-right">
+				<div class="banner-right-top">
+					<a href='#'>更多</a>
+					<ul>
+						<li><span>[大牌]</span>ELLE轻奢包199元起</li>
+						<li><span>[生鲜]</span>当季最新鲜的水果</li>
+						<li><span>[公告]</span>浙江快递延迟公告</li>
+					</ul>
+				</div>
+				<div class="banner-right-bottom">
+					<ul>
+						<li><img src="static/images/index/life_ico1.png"><span>充话费</span></li>
+						<li><img src="static/images/index/life_ico12.png"><span>充话费</span></li>
+						<li><img src="static/images/index/life_ico2.png"><span>充话费</span></li>
+						<li><img src="static/images/index/life_ico4.png"><span>充话费</span></li>
+						<li><img src="static/images/index/life_ico5.png"><span>充话费</span></li>
+						<li><img src="static/images/index/life_ico6.png"><span>充话费</span></li>
+						<li><img src="static/images/index/life_ico7.png"><span>充话费</span></li>
+						<li><img src="static/images/index/life_ico10.png"><span>充话费</span></li>
+						<li><img src="static/images/index/life_ico11.png"><span>充话费</span></li>
+					</ul>
+					<a href="#"><img src="static/images/index/special.gif"/></a>
+				</div>
+			</div>
+
+		</div>
+
+	<div id="alsolike">
+		<h2 class="special-title">
+		猜你喜欢
+		<span>You May Also Like</span>
+		</h2>
+		<ul class="alsolike-lists">
+			<li>
+				<img src="/static/images/index/alsolike1.jpg"/>
+				<a href="#">海尔（Haier）JC-87 酒柜 87升</a>
+				<div>￥<span>1739.0</span></div>
+
+			</li>
+			<li>
+				<img src="/static/images/index/alsolike2.jpg"/>
+				<a href="#">可莱丝clinie NMF针剂水库面膜贴 10片 韩国进口 (宁波跨境保税商品)</a>
+				<div>￥<span>89.0</span></div>
+
+			</li>
+			<li>
+				<img src="/static/images/index/alsolike3.jpg"/>
+				<a href="#">妮飘  航海王湿纸巾30抽 茶树精油超纯水 清洁抑菌湿巾纸 30抽（商超同款）</a>
+				<div>￥<span>7.2</span></div>
+
+			</li>
+			<li>
+				<img src="/static/images/index/alsolike4.jpg"/>
+				<a href="#">海尔（Haier）JC-87 酒柜 87升</a>
+				<div>￥<span>1739.0</span></div>
+
+			</li>
+			<li>
+				<img src="/static/images/index/alsolike5.jpg"/>
+				<a href="#">（跨境保税商品）郑州保税区直发 BLACKMORES深海鱼油软胶囊原味400粒 澳大利亚进口</a>
+				<div>￥<span>1739.0</span></div>
+
+			</li>
+		</ul>
+		<ul class="alsolike-lists">
+			<li>
+				<img src="/static/images/index/alsolike2-1.jpg"/>
+				<a href="#">海尔（Haier）JC-87 酒柜 87升</a>
+				<div>￥<span>1739.0</span></div>
+
+			</li>
+			<li>
+				<img src="/static/images/index/alsolike2-2.jpg"/>
+				<a href="#">海尔（Haier）JC-87 酒柜 87升</a>
+				<div>￥<span>1739.0</span></div>
+
+			</li>
+			<li>
+				<img src="/static/images/index/alsolike2-3.jpg"/>
+				<a href="#">海尔（Haier）JC-87 酒柜 87升</a>
+				<div>￥<span>1739.0</span></div>
+
+			</li>
+			<li>
+				<img src="/static/images/index/alsolike2-4.jpg"/>
+				<a href="#">海尔（Haier）JC-87 酒柜 87升</a>
+				<div>￥<span>1739.0</span></div>
+
+			</li>
+			<li>
+				<img src="/static/images/index/alsolike2-5.jpg"/>
+				<a href="#">海尔（Haier）JC-87 酒柜 87升</a>
+				<div>￥<span>1739.0</span></div>
+
+			</li>
+		</ul>
+	</div>
+
+    <div class="special">
+			<div class="wrap">
+			<h2 class="special-title">特色频道<span>Featured Channel</span>
+			</h2>
+			<div class="special-left">
+				<p class="chanel_1"></p>
+				<a href="#" class="chanel-a-1"><img src="/static/images/index/special1.jpg" width='260' height='400'/></a>
+			</div>
+			<div class="special-left">
+				<p class="chanel_2"></p>
+				<a href="#" class="chanel-a-2"><img src="/static/images/index/special2.jpg"/></a>
+			</div>
+			<div class="special-left">
+				<p class="chanel_3"></p>
+				<a href="#" class="chanel-a-3"><img src="/static/images/index/special3.jpg"/></a>
+			</div>
+			<div class="special-last">
+					<div class="special-left special-last1">
+						<p class="chanel_1"></p>
+						<a href="#" class="chanel-a-1"><img src="/static/images/index/special4.jpg" width='392' height='195'/></a>
+					</div>
+					<div class="special-left special-last2">
+						<p class="chanel_4"></p>
+						<a href="#" class="chanel-a-2"><img src="/static/images/index/special5.jpg"/></a>
+					</div>
+					<div class="special-left special-last3">
+						<p class="chanel_5"></p>
+						<a href="#" class="chanel-a-3"><img src="/static/images/index/special6.jpg"/></a>
+					</div>
+			</div>
+		</div>
+		</div>
+
+	<div id="floor1" class="floor floor1">
+			<div class="wrap">
+				<h3 class="floor-tit">1楼</h3>
+				<div class="floor-left">
+					<ul class="floor-pic-lists">
+						<li><a href="#"><img src="/static/images/index/floor1-1.jpg"/></a></li>
+						<li><a href="#"><img src="/static/images/index/floor1-2.jpg"/></a></li>
+						<li><a href="#"><img src="/static/images/index/floor1-3.jpg"/></a></li>
+						<li><a href="#"><img src="/static/images/index/floor1-1.jpg"/></a></li>
+					</ul>
+					<ul class="floor-btn-lists">
+						<li><span>1</span></li>
+						<li><span>2</span></li>
+						<li><span>3</span></li>
+					</ul>
+				</div>
+				<div class="floor-right ">
+					<a href="#" class="floor-right-a-1"><img src="/static/images/index/floor1-4.jpg"/></a>
+					<a href="#" class="floor-right-a-2"><img src="/static/images/index/floor1-5.jpg"/></a>
+					<a href="#" class="floor-right-a-2"><img src="/static/images/index/floor1-6.jpg"/></a>
+					<a href="#" class="floor-right-a-3"><img src="/static/images/index/floor1-7.jpg"/></a>
+					<a href="#" class="floor-right-a-3"><img src="/static/images/index/floor1-8.jpg"/></a>
+					<a href="#" class="floor-right-a-3"><img src="/static/images/index/floor1-9.jpg"/></a>
+					<a href="#" class="floor-right-a-3"><img src="/static/images/index/floor1-10.jpg"/></a>
+					<a href="#" class="floor-right-a-3"><img src="/static/images/index/floor1-10.jpg"/></a>
+				</div>
+			</div>
+		</div>
+
+	<div id="floor2" class="floor floor1">
+			<div class="wrap">
+				<h3 class="floor2-tit">2楼</h3>
+				<div class="floor-left">
+					<ul class="floor2-pic-lists">
+						<li><a href="#"><img src="/static/images/index/floor2-1.jpg"/></a></li>
+						<li><a href="#"><img src="/static/images/index/floor2-2.jpg"/></a></li>
+						<li><a href="#"><img src="/static/images/index/floor2-3.jpg"/></a></li>
+						<li><a href="#"><img src="/static/images/index/floor2-1.jpg"/></a></li>
+					</ul>
+					<ul class="floor2-btn-lists">
+						<li><span>1</span></li>
+						<li><span>2</span></li>
+						<li><span>3</span></li>
+					</ul>
+				</div>
+				<div class="floor-right ">
+					<a href="#" class="floor-right-a-2"><img src="/static/images/index/floor2-4.jpg"/></a>
+					<a href="#" class="floor-right-a-2"><img src="/static/images/index/floor2-5.jpg"/></a>
+					<a href="#" class="floor-right-a-2"><img src="/static/images/index/floor2-10.jpg"/></a>
+					<a href="#" class="floor-right-a-2"><img src="/static/images/index/floor2-11.jpg"/></a>
+					<a href="#" class="floor-right-a-4"><img src="/static/images/index/floor2-6.jpg"/></a>
+					<a href="#" class="floor-right-a-4"><img src="/static/images/index/floor2-8.jpg"/></a>
+					<a href="#" class="floor-right-a-4"><img src="/static/images/index/floor2-9.jpg"/></a>
+					<a href="#" class="floor-right-a-4"><img src="/static/images/index/floor2-7.jpg"/></a>
+					<span><img src="/static/images/index/floor2-12.jpg"/></span>
+					<span><img src="/static/images/index/floor2-13.jpg"/></span>
+					<span><img src="/static/images/index/floor2-14.jpg"/></span>
+					<span><img src="/static/images/index/floor2-15.jpg"/></span>
+					<span><img src="/static/images/index/floor2-16.jpg"/></span>
+
+				</div>
+			</div>
+		</div>
+
+	<div id="floor3" class="floor floor1">
+			<div class="wrap">
+				<h3 class="floor3-tit">3楼</h3>
+				<div class="floor-left">
+					<ul class="floor3-pic-lists">
+						<li><a href="#"><img src="/static/images/index/floor3-1.jpg"/></a></li>
+						<li><a href="#"><img src="/static/images/index/floor3-2.jpg"/></a></li>
+						<li><a href="#"><img src="/static/images/index/floor3-3.jpg"/></a></li>
+						<li><a href="#"><img src="/static/images/index/floor3-1.jpg"/></a></li>
+					</ul>
+					<ul class="floor3-btn-lists">
+						<li><span>1</span></li>
+						<li><span>2</span></li>
+						<li><span>3</span></li>
+					</ul>
+				</div>
+				<div class="floor-right ">
+					<a href="#" class="floor-right-a-2"><img src="/static/images/index/floor3-4.jpg"/></a>
+					<a href="#" class="floor-right-a-2"><img src="/static/images/index/floor3-5.jpg"/></a>
+					<a href="#" class="floor-right-a-2"><img src="/static/images/index/floor3-6.jpg"/></a>
+					<a href="#" class="floor-right-a-2"><img src="/static/images/index/floor3-7.jpg"/></a>
+					<a href="#" class="floor-right-a-3"><img src="/static/images/index/floor3-8.jpg"/></a>
+					<a href="#" class="floor-right-a-3"><img src="/static/images/index/floor3-9.jpg"/></a>
+					<a href="#" class="floor-right-a-3"><img src="/static/images/index/floor3-10.jpg"/></a>
+					<a href="#" class="floor-right-a-3"><img src="/static/images/index/floor3-11.jpg"/></a>
+				</div>
+			</div>
+		</div>
+
+	<div id="floor4" class="floor floor1">
+			<div class="wrap">
+				<h3 class="floor4-tit">2楼</h3>
+				<div class="floor-left">
+					<ul class="floor4-pic-lists">
+						<li><a href="#"><img src="/static/images/index/floor4-1.jpg"/></a></li>
+						<li><a href="#"><img src="/static/images/index/floor4-2.jpg"/></a></li>
+						<li><a href="#"><img src="/static/images/index/floor4-3.jpg"/></a></li>
+						<li><a href="#"><img src="/static/images/index/floor4-1.jpg"/></a></li>
+					</ul>
+					<ul class="floor4-btn-lists">
+						<li><span>1</span></li>
+						<li><span>2</span></li>
+						<li><span>3</span></li>
+					</ul>
+				</div>
+				<div class="floor-right ">
+					<a href="#" class="floor-right-a-2"><img src="/static/images/index/floor4-4.jpg"/></a>
+					<a href="#" class="floor-right-a-2"><img src="/static/images/index/floor4-5.jpg"/></a>
+					<a href="#" class="floor-right-a-2"><img src="/static/images/index/floor4-6.jpg"/></a>
+					<a href="#" class="floor-right-a-2"><img src="/static/images/index/floor4-7.jpg"/></a>
+					<a href="#" class="floor-right-a-4"><img src="/static/images/index/floor4-8.jpg"/></a>
+					<a href="#" class="floor-right-a-4"><img src="/static/images/index/floor4-9.jpg"/></a>
+					<a href="#" class="floor-right-a-4"><img src="/static/images/index/floor4-10.jpg"/></a>
+					<a href="#" class="floor-right-a-4"><img src="/static/images/index/floor4-11.jpg"/></a>
+					<span><img src="/static/images/index/floor4-12.jpg"/></span>
+					<span><img src="/static/images/index/floor4-13.jpg"/></span>
+					<span><img src="/static/images/index/floor4-14.jpg"/></span>
+					<span><img src="/static/images/index/floor4-15.jpg"/></span>
+					<span><img src="/static/images/index/floor4-16.jpg"/></span>
+
+				</div>
+			</div>
+		</div>
+
+	<div id="floor5" class="floor floor1">
+			<div class="wrap">
+				<h3 class="floor5-tit">2楼</h3>
+				<div class="floor-left">
+					<ul class="floor5-pic-lists">
+						<li><a href="#"><img src="/static/images/index/floor5-1.jpg"/></a></li>
+						<li><a href="#"><img src="/static/images/index/floor5-2.jpg"/></a></li>
+						<li><a href="#"><img src="/static/images/index/floor5-3.jpg"/></a></li>
+						<li><a href="#"><img src="/static/images/index/floor5-1.jpg"/></a></li>
+					</ul>
+					<ul class="floor5-btn-lists">
+						<li><span>1</span></li>
+						<li><span>2</span></li>
+						<li><span>3</span></li>
+					</ul>
+				</div>
+				<div class="floor-right ">
+					<a href="#" class="floor-right-a-1"><img src="/static/images/index/floor5-4.jpg"/></a>
+					<a href="#" class="floor-right-a-2"><img src="/static/images/index/floor5-5.jpg"/></a>
+					<a href="#" class="floor-right-a-6"><img src="/static/images/index/floor5-6.jpg"/></a>
+					<a href="#" class="floor-right-a-6"><img src="/static/images/index/floor5-7.jpg"/></a>
+					<a href="#" class="floor-right-a-4"><img src="/static/images/index/floor5-8.jpg"/></a>
+					<a href="#" class="floor-right-a-4"><img src="/static/images/index/floor5-9.jpg"/></a>
+					<a href="#" class="floor-right-a-4"><img src="/static/images/index/floor5-10.jpg"/></a>
+					<a href="#" class="floor-right-a-4"><img src="/static/images/index/floor5-11.jpg"/></a>			
+					<span><img src="/static/images/index/floor5-12.jpg"/></span>
+					<span><img src="/static/images/index/floor5-13.jpg"/></span>
+					<span><img src="/static/images/index/floor5-14.jpg"/></span>
+					<span><img src="/static/images/index/floor5-15.jpg" /></span>
+					<span><img src="/static/images/index/floor5-16.jpg" width='104px' height='46px'/></span>
+					
+				</div>
+			</div>
+		</div>
+	<!----------------------floor6-->
+	<div id="floor6" class="floor floor1">
+		<div class="wrap">
+			<h3 class="floor6-tit">2楼</h3>
+			<div class="floor-left">
+				<ul class="floor6-pic-lists">
+					<li><a href="#"><img src="/static/images/index/floor6-1.jpg"/></a></li>
+					<li><a href="#"><img src="/static/images/index/floor6-2.jpg"/></a></li>
+					<li><a href="#"><img src="/static/images/index/floor6-3.jpg"/></a></li>
+					<li><a href="#"><img src="/static/images/index/floor6-1.jpg"/></a></li>
+				</ul>
+				<ul class="floor6-btn-lists">
+					<li><span>1</span></li>
+					<li><span>2</span></li>
+					<li><span>3</span></li>
+				</ul>
+			</div>
+			<div class="floor-right ">
+				<a href="#" class="floor-right-a-1"><img src="/static/images/index/floor6-4.jpg"/></a>
+				<a href="#" class="floor-right-a-2"><img src="/static/images/index/floor6-5.jpg"/></a>
+				<a href="#" class="floor-right-a-6"><img src="/static/images/index/floor6-6.jpg"/></a>
+				<a href="#" class="floor-right-a-6"><img src="/static/images/index/floor6-7.jpg"/></a>
+				<a href="#" class="floor-right-a-4"><img src="/static/images/index/floor6-8.jpg"/></a>
+				<a href="#" class="floor-right-a-4"><img src="/static/images/index/floor6-9.jpg"/></a>
+				<a href="#" class="floor-right-a-4"><img src="/static/images/index/floor6-10.jpg"/></a>
+				<a href="#" class="floor-right-a-4"><img src="/static/images/index/floor6-11.jpg"/></a>			
+				<span><img src="/static/images/index/floor6-12.jpg"/></span>
+				<span><img src="/static/images/index/floor6-13.jpg"/></span>
+				<span><img src="/static/images/index/floor6-14.jpg"/></span>
+				<span><img src="/static/images/index/floor6-15.jpg" /></span>
+				<span><img src="/static/images/index/floor6-16.jpg" width='104px' height='46px'/></span>
+				
+			</div>
+		</div>
+	</div>
+	<!----------------------------------floor7-->
+	<div id="floor7" class="floor floor1">
+		<div class="wrap">
+			<h3 class="floor7-tit">2楼</h3>
+			<div class="floor-left">
+				<ul class="floor7-pic-lists">
+					<li><a href="#"><img src="/static/images/index/floor7-1.jpg"/></a></li>
+					<li><a href="#"><img src="/static/images/index/floor7-2.jpg"/></a></li>
+					<li><a href="#"><img src="/static/images/index/floor7-3.jpg"/></a></li>
+					<li><a href="#"><img src="/static/images/index/floor7-1.jpg"/></a></li>
+				</ul>
+				<ul class="floor7-btn-lists">
+					<li><span>1</span></li>
+					<li><span>2</span></li>
+					<li><span>3</span></li>
+				</ul>
+			</div>
+			<div class="floor-right ">
+				<a href="#" class="floor-right-a-2"><img src="/static/images/index/floor7-4.jpg"/></a>
+				<a href="#" class="floor-right-a-2"><img src="/static/images/index/floor7-5.jpg"/></a>
+				<a href="#" class="floor-right-a-2"><img src="/static/images/index/floor7-6.jpg"/></a>
+				<a href="#" class="floor-right-a-2"><img src="/static/images/index/floor7-7.jpg"/></a>
+				<a href="#" class="floor-right-a-4"><img src="/static/images/index/floor7-8.jpg"/></a>
+				<a href="#" class="floor-right-a-4"><img src="/static/images/index/floor7-9.jpg"/></a>
+				<a href="#" class="floor-right-a-4"><img src="/static/images/index/floor7-10.jpg"/></a>
+				<a href="#" class="floor-right-a-4"><img src="/static/images/index/floor7-11.jpg"/></a>
+				<span><img src="/static/images/index/floor7-12.jpg"/></span>
+				<span><img src="/static/images/index/floor7-13.jpg"/></span>
+				<span><img src="/static/images/index/floor7-14.jpg"/></span>
+				<span><img src="/static/images/index/floor7-15.jpg"/></span>
+				<span><img src="/static/images/index/floor7-16.jpg"/></span>
+				
+			</div>
+		</div>
+	</div>
+	<!----------------------------------floor8-->
+	<div id="floor8" class="floor floor1">
+		<div class="wrap">
+			<h3 class="floor8-tit">2楼</h3>
+			<div class="floor-left">
+				<ul class="floor8-pic-lists">
+					<li><a href="#"><img src="/static/images/index/floor8-1.jpg"/></a></li>
+					<li><a href="#"><img src="/static/images/index/floor8-2.jpg"/></a></li>
+					<li><a href="#"><img src="/static/images/index/floor8-3.jpg"/></a></li>
+					<li><a href="#"><img src="/static/images/index/floor8-1.jpg"/></a></li>
+				</ul>
+				<ul class="floor8-btn-lists">
+					<li><span>1</span></li>
+					<li><span>2</span></li>
+					<li><span>3</span></li>
+				</ul>
+			</div>
+			<div class="floor-right ">
+				<a href="#" class="floor-right-a-2"><img src="/static/images/index/floor8-4.jpg"/></a>
+				<a href="#" class="floor-right-a-2"><img src="/static/images/index/floor8-5.jpg"/></a>
+				<a href="#" class="floor-right-a-2"><img src="/static/images/index/floor8-6.jpg"/></a>
+				<a href="#" class="floor-right-a-2"><img src="/static/images/index/floor8-7.jpg"/></a>
+				<a href="#" class="floor-right-a-4"><img src="/static/images/index/floor8-8.jpg"/></a>
+				<a href="#" class="floor-right-a-4"><img src="/static/images/index/floor8-9.jpg"/></a>
+				<a href="#" class="floor-right-a-4"><img src="/static/images/index/floor8-10.jpg"/></a>
+				<a href="#" class="floor-right-a-4"><img src="/static/images/index/floor8-11.jpg"/></a>
+				<span><img src="/static/images/index/floor8-12.jpg"/></span>
+				<span><img src="/static/images/index/floor8-13.jpg"/></span>
+				<span><img src="/static/images/index/floor8-14.jpg"/></span>
+				<span><img src="/static/images/index/floor8-15.jpg"/></span>
+				<span><img src="/static/images/index/floor8-16.jpg"/></span>
+				
+			</div>
+		</div>
+	</div>
+
+	<div id="footer">
+		<div class="wrap">
+			<div class="dl-cont">
+			<dl class="footer-lists">
+				<dt>新手入门</dt>
+				<dd><a href="#">购物流程</a></dd>
+				<dd><a href="#">会员介绍</a></dd>
+				<dd><a href="#">常见问题</a></dd>
+				<dd><a href="#">发票说明</a></dd>
+				<dd><a href="#">联系客服</a></dd>
+			</dl>
+			<dl class="footer-lists">
+				<dt>新手入门</dt>
+				<dd><a href="#">购物流程</a></dd>
+				<dd><a href="#">会员介绍</a></dd>
+				<dd><a href="#">常见问题</a></dd>
+				<dd><a href="#">发票说明</a></dd>
+				<dd><a href="#">联系客服</a></dd>
+			</dl>
+			<dl class="footer-lists">
+				<dt>新手入门</dt>
+				<dd><a href="#">购物流程</a></dd>
+				<dd><a href="#">会员介绍</a></dd>
+
+				<dd><a href="#">发票说明</a></dd>
+				<dd><a href="#">联系客服</a></dd>
+			</dl>
+			<dl class="footer-lists">
+				<dt>新手入门</dt>
+				<dd><a href="#">购物流程</a></dd>
+				<dd><a href="#">会员介绍</a></dd>
+				<dd><a href="#">常见问题</a></dd>
+				<dd><a href="#">发票说明</a></dd>
+				<dd><a href="#">联系客服</a></dd>
+				<dd><a href="#">常见问题</a></dd>
+			</dl>
+			<dl class="footer-lists">
+				<dt>新手入门</dt>
+				<dd><a href="#">购物流程</a></dd>
+				<dd><a href="#">会员介绍</a></dd>
+				<dd><a href="#">常见问题</a></dd>
+
+			</dl>
+			</div>
+		</div>
+			<div class="bottom-nav">
+				<p>
+					<a href="#">关于我们</a><span>|</span>
+					<a href="#">联系我们</a><span>|</span>
+					<a href="#">加盟合作</a><span>|</span>
+					<a href="#">诚聘英才</a><span>|</span>
+					<a href="#">友情链接</a>
+				</p>
+				<div>
+					百联集团有限公司旗下 上海百联全渠道电子商务有限公司版权所有<span>|</span>
+					  客服电话：400-900-8800 <span>|</span>
+					   沪ICP备15028847号
+				</div>
+				<p class="last-p">
+					互联网药品信息服务资质证书编号：沪-（非营业性）-2016-0044
+				</p>
+				<div class="plice">
+				<a href="#"><img src="/static/images/index/plice1-png.png"><span>沪公网安备  31010102002366号</span></a>
+				<a href="#"><img src="/static/images/index/plice2.png"><span>沪网购大家评</span></a>
+				<a href="#"><img src="/static/images/index/plice1-png.png"><span>沪网购大家评</span></a>
+				</div>
+			</div>
+
+
+	</div>
+
+	<div id="navigation">
+		<a href="#floor1" class="nav-f1"></a>
+		<a href="#floor2" class="nav-f2"></a>
+		<a href="#floor3" class="nav-f3"></a>
+		<a href="#floor4" class="nav-f4"></a>
+		<a href="#floor5" class="nav-f5"></a>
+		<a href="#floor6" class="nav-f6"></a>
+		<a href="#floor7" class="nav-f7"></a>
+		<a href="#floor8" class="nav-f8"></a>
+		<a href="#top" class="nav-f9"></a>
+	</div>
+
+	<div class="fliesearch">
+		<div class="wrap">
+			<div class="fliesearch-left">
+				<p>全部分类</p>
+				<a>
+
+				</a>
+			</div>
+			<div class="fliesearch-logo">
+				<img src="/static/images/index/logo-1.png">
+			</div>
+			<p class="fliesearch-login">
+				<a href="{% url 'users:user_login' %}" class="fliesearch-login-a">登陆</a><span>|</span><a href="{% url 'users:register' %}">注册</a>
+			</p>
+			<div class="header-search-top" style="float:right;margin-right:50px;margin-top:10px;">
+				<div class="header-search-input"><input placeholder="搜索您感兴趣的东西" type="text" data-value="搜索:"/></div>
+				<div class="header-search-top-p"></div>
+
+			</div>
+
+
+		</div>
+	</div>
+	<!-----------------------------------右侧的菜单栏------>
+	<div class="nosidederty">
+		<div class="nosidederty-left">
+			<div class='nosidederty-left1' >
+				<i class="icon iconfont">&#xe601;</i>
+				<span><a href="{% url 'users:userinfo' %}">我的信息</a></span>
+			</div>
+			<div class='nosidederty-left2' >
+				<i class="icon iconfont">&#xe62e;</i>
+				<div><a href="{% url 'shopcart:list' %}">购物车</a></div>
+				<i class="cuntnum"></i>
+			</div>
+			<div class='nosidederty-left3' >
+				<i class="icon iconfont">&#xe633;</i>
+				<span>我的收藏</span>
+
+			</div>
+			<div class='nosidederty-left4' >
+				<i class="icon iconfont">&#xe6cf;</i>
+				<span style="width:86px;height:86px;"><img  width='86px'; height='86px' src="static/images/index/weixincode.png"/></span>
+			</div>
+			<div class='nosidederty-left5' >
+				<i class="icon iconfont">&#xe61e;</i>
+				<span>联系客服</span>
+			</div>
+		</div>
+		<div class="nosidederty-right">
+			<a class="btn-a">>></a>
+			<div class="nosidederty-right-login">
+				<h2>{{msg}}==={{error_code}}</h2>
+				<form action="{% url 'users:user_login' %}" method="post" >
+        			{% csrf_token %}
+				<div class="nrl-tit">会员登录<a href="{% url 'users:register' %}">注册新账号</a></div>
+				<div class="nrl-cont">
+					<input type="text" class="nrl-cont1" name="username" placeholder="用户名" ><br>
+					<input type="hidden" class="nrl-cont1" name="next" value="{{next_url}}"><br>
+					<input type="password" class="nrl-cont2" name="password" placeholder="密码"><br>
+					<img src="/users/createImage/" alt="图片有问题" onclick="refresh_check_code(this)"><br>
+					<input type="text" class="nrl-cont2" name="ac" placeholder="验证码"><br>
+					<a href="#">忘记密码</a>
+					<div class="login-btn" style="margin-left:0; width:220px;margin-top:20px;">
+						<input type="submit" value="登录" >
+					</div>
+
+				</div>
+			</form>
+		</div>
+			<div class="nosidederty-right-car">
+				<div class="lists-cunt">
+						<span class="cunt-pro">商品</span>
+						<span class="cunt-num">数量</span>
+						<span class="cunt-cunt">小计</span>
+				</div>
+
+
+				<div class="car-and">
+					<p>共<span class="totalCount"></span>件商品,总计<span class="totalPrice"><span></p>
+					<a href="{% url 'shopcart:list' %}" class="tomycar">查看购物车</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+<script>
+        $(function () {
+
+               $(".addGoods").click(function () {
+                   var $goods_id = $(this).attr("goods_id")
+                   $.ajax({
+                       url : "/shopcart/1/"+ $goods_id +"/add/",
+                       type : "get",
+                       success : function (msg) {
+                           alert(msg)
+                       },
+                       error : function (info) {
+                           alert("添加失败，请重新添加")
+                       },
+                   })
+               });
+            });
+
+
+
+
+</script>
+<script>
+     function refresh_check_code(node) {
+     // src 后面加问号会自动刷新验证码 img 的 src
+    // get 请求方式缓存处理
+     node.src = '/users/createImage/?search=' + Math.random();
+     }
+</script>
 </body>
 </html>

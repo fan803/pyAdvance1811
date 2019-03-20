@@ -47,13 +47,13 @@
         <table border="1">
             {% for store in stores %}
             <tr>
-                <td>店铺封面</td>
-                <td><img src="/{{store.cover}}"></td>
-                <td>店铺名称</td>
-                <td>{{store.name}}</td>
-                <td>店铺描述</td>
-                <td>{{store.intro}}</td>
-                <td><a href="{% url 'store:detail' store.id %}">查询详情</a></td>
+                <td style="width:200px;height:200px;">店铺封面</td>
+                <td><img style="width:200px;height:200px;" src="/{{store.cover}}"></td>
+                <td style="width:200px;height:200px;">店铺名称</td>
+                <td style="width:200px;height:200px;">{{store.name}}</td>
+                <td style="width:200px;height:200px;">店铺描述</td>
+                <td style="width:200px;height:200px;">{{store.intro}}</td>
+                <td style="width:200px;height:200px;"><a href="{% url 'store:detail' store.id %}">查询详情</a></td>
             </tr>
 
             {% empty %}

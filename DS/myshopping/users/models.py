@@ -19,3 +19,23 @@ class UserInfo(models.Model):
     phone = models.CharField(max_length=50,default='120',verbose_name="联系方式")
     #外键关联
     user = models.OneToOneField(User,on_delete=models.CASCADE)
+
+
+class Address(models.Model):
+    # 地址编号
+    id = models.AutoField(primary_key=True)
+    # 地址所属用户
+    user = models.ForeignKey(User,on_delete=models.CASCADE,verbose_name="地址所属用户")
+    # 收货人姓名
+    recv_name = models.CharField(max_length=100,verbose_name="收货人姓名")
+    # 收货人联系方式
+    recv_phone = models.CharField(max_length=20,verbose_name="收货人联系方式")
+    #收货人省区
+    provice = models.CharField(max_length=100,verbose_name="收货人省区")
+    #详细描述
+    desc = models.CharField(max_length=100,verbose_name="详细描述")
+    # 是否默认地址
+    is_default = models.BooleanField(default=False,verbose_name="是否默认地址")
+    # False非默认]
+
+

@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,reverse
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
@@ -87,6 +87,8 @@ def userinfo(req):
     print(req.user.userinfo.header)
     return render(req, "users/userInfo.html", {})
 
+
+#图片
 def createImage(req):
     #准备空间放置验证码图片
     b = BytesIO()
@@ -95,5 +97,54 @@ def createImage(req):
     img.save(b,'png')
     req.session['code'] = code
     return HttpResponse(b.getvalue())
+
+
+
+#添加地址
+def add_address(req):
+    if req.method == "GET":
+        return render(req, "users/add_address.html", {})
+    else:
+        recv_name = req.POST["recv_name"]
+        recv_phone = req.POST["recv_phone"]
+        provice = req.POST["provice"]
+        desc = req.POST["desc"]
+        is_default = req.POST["is_default"]
+        try:
+            #设置默认地址为默认
+            is_default = req.POST["is_default"]
+            addresses = models.Address.objects.filter(user=req.user)
+            for address in addresses:
+                address.is_default = False
+                address.save()
+            address = models.Address(recv_name=recv_name,recv_phone=recv_phone,provice=provice, desc=desc, user=req.user, is_default=True)
+            address.save()
+
+
+        except:
+            address = models.Address(recv_name=recv_name, recv_phone=recv_phone, provice=provice, desc=desc, user=req.user,
+                                     is_default=False)
+            address.save()
+        return redirect(reverse("users:address_list"))
+def address_list(req):
+    addresses = models.Address.objects.filter(user=req.user)
+    return render(req,"users/list_address.html",{"addresses":addresses})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

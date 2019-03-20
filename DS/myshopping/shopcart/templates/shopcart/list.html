@@ -2,19 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>查看购物车</title>
+    <title>查看我的购物车</title>
 </head>
 <body>
     <h1>查看购物车</h1>
+    <form action="{% url 'orders:confirm' %}" method="post">
+        {% csrf_token %}
     <table>
-        {% for s in shopcart %}
+        {% for s in shopcarts %}
             <tr>
-                <td><img src="/{{s.goods.goodimage_set.first.path}}" alt="图片有问题"></td>
+                <td><input type="checkbox" name="g_id" value="{{s.id}}"></td>
+                <td><img style="width:200px;height:200px;" src="/{{s.goods.goodsimage_set.all.first.path}}" alt="图片有问题"></td>
                 <td>商品名称：{{s.goods.name}}</td>
                 <td>商品数量：{{s.count}}</td>
-                <td>小计金额：{{s.goods.name}}</td>
+                <td>小计金额：{{s.goods.price}}</td>
             </tr>
         {% endfor %}
     </table>
+    <button>确认订单</button>
+    </form>
 </body>
 </html>

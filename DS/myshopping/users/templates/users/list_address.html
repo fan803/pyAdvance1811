@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>收货地址列表</title>
+    </head>
+    <body>
+        <h1>收货地址管理</h1>
+
+            {% for address in addresses %}
+            <tr>
+                <td>收货人:{{address.recv_name}}</td>
+            </tr>
+            <tr>&nbsp;<br></tr>
+            <tr>
+                <td>收货人电话:{{address.recv_phone}}</td>
+            </tr>
+            <tr>&nbsp;<br></tr>
+            <tr>
+                <td>收货地址:{{address.provice}}{{address.desc}}</td>
+            </tr>
+            <tr>&nbsp;<br></tr>
+            <tr>
+                <td>{% if address.is_default %}
+                        <span style="color:blue;">默认地址</span>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>&nbsp;<br></tr>
+            <tr>&nbsp;<br></tr>
+            {% endfor %}
+    </body>
+</html>

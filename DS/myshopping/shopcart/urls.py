@@ -2,6 +2,7 @@ from django.conf.urls import url
 from . import views
 
 
-urlplatterns =[
-    url(r"(?P<count>\d+)/(?P<g_id>)/add/",views.add,name="add")
+urlpatterns = [
+    url(r"^(?P<count>\d+)/(?P<goods_id>\d+)/add/$", views.add, name="add"),
+    url(r"^list/$", views.list, name="list"),
 ]

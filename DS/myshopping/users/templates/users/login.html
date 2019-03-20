@@ -1,37 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>用户登录</title>
-</head>
-<body>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>登陆注册页面</title>
+		<link rel="stylesheet" type="text/css" href="/static/js/lib/css/index.css"/>
+		<link rel="stylesheet" type="text/css" href="/static/js/lib/css/style.css"/>
+		<script type="text/javascript" src='/static/js/lib/js/jquery.js'></script>
+		<script type="text/javascript" src='/static/js/lib/js/index.js'></script>
+		<script type="text/javascript" src="/static/js/lib/js/jquery.validate.js"></script>
+		<script src="/static/js/lib/js/login.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body style="background: #f9f9f9;">
+		<div class="login-header">
+			<div class="login-wrap">
+				<a href="#"> <img src="/static/images/index/header-logo.png" title="logo" alt="烧饼"/></a>
+				<span><img src="/static/images/index/login-font4.png"></span>
+			</div>
+		</div>
+		<!--------------------------------信息表单部分-->
+		<div class='login-mian'>
 
-		<h1>用户登录</h1>
+				<div class="login-mian-cont">
+					<div class="login-mian-cont-top">
+						<div class="cont-top-1">
+						您好，感谢您加入i烧饼
+						</div>
+						<div class="cont-top-2">
+							如有账号，请点击 <a href="{% url 'users:register' %}">注册</a>
+						</div>
+					</div>
+					<div class="login-mian-cont-btm">
+						<form action="{% url 'users:user_login' %}" method="post"  >
+							{% csrf_token %}
+							<div class="login-name">
+								<div class="login-name-left">
+									<i>*</i>用户名
+								</div>
+								<div class="login-name-right">
+									<input name='username' type="text" class="text"  placeholder="6-20位字符，支持字母或字母与数字组合">
+								</div>
+							</div>
+							<div class="login-name">
+								<div class="login-name-left">
+									<i>*</i>登陆密码
+								</div>
+								<div class="login-name-right">
+									<input id='Lgkey' name='password' type="password" placeholder="6-20位字符，建议使用字母、符号和数字组合" class="login-input1">
+								</div>
+							</div>
+							<div class="login-name">
+								<div class="login-name-left">
+									<i>*</i>验证码
+								</div>
+								<div class="login-name-right" >
+									<input name='ac' style="width:130px" type="text" placeholder="请输入验证码" class="login-input4">
+									<img src="/users/createImage/" alt="图片有问题" onclick="refresh_check_code(this)">
+								</div>
+							</div>
+							<div class="xieyi">
+								<i class="true-true ok"></i>
+								<span>我已阅读并同意</span>
+								<a href='#'>百联通会员注册协议</a>
+							</div>
+							<input type="submit" class="login-btn"  value="立即登录">
 
-    <h2>{{msg}}==={{error_code}}</h2>
-    <form action="{% url 'users:user_login' %}" method="post" >
-        {% csrf_token %}
-		<input type="text" class="text" name="username" placeholder="用户名" ><br>
-        <input type="hidden" name="next" value="{{next_url}}"><br>
-		<input type="password" name="password" placeholder="密码"><br>
-        <img src="/users/createImage/" alt="图片有问题" onclick="refresh_check_code(this)"><br>
-        <input type="text" name="ac" placeholder="验证码"><br>
-		<input type="submit" value="登录" >
+							</inpt>
+						</form>
+					</div>
+				</div>
+
+		</div>
+	<!----------------------------------footer-->
+	<div id="footer" >
+
+			<div class="bottom-nav" style="background:#f9f9f9">
+				<p>
+					<a href="#">关于我们</a><span>|</span>
+					<a href="#">联系我们</a><span>|</span>
+					<a href="#">加盟合作</a><span>|</span>
+					<a href="#">诚聘英才</a><span>|</span>
+					<a href="#">友情链接</a>
+				</p>
+				<div>
+					百联集团有限公司旗下 上海百联全渠道电子商务有限公司版权所有<span>|</span>
+					  客服电话：400-900-8800 <span>|</span>
+					   沪ICP备15028847号
+				</div>
+				<p class="last-p">
+					互联网药品信息服务资质证书编号：沪-（非营业性）-2016-0044
+				</p>
+
+			</div>
 
 
-    </form>
-
-
-
-
-
-
-<script>
+	</div>
+	<script>
      function refresh_check_code(node) {
      // src 后面加问号会自动刷新验证码 img 的 src
     // get 请求方式缓存处理
      node.src = '/users/createImage/?search=' + Math.random();
      }
 </script>
-</body>
+	</body>
 </html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>添加地址</title>
+        <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/bootstrap-3.3.4.css">
+        <link href="/static/js/lib/css/city-picker.css" rel="stylesheet">
+        <link href="/static/js/lib/css/main.css" rel="stylesheet">
+    </head>
+    <body>
+        <h1>添加你的收货地址</h1>
+        <form action="{% url 'users:add_address'%}" method="post">
+            {% csrf_token %}
+            收货人的名称：<input type="text" name="recv_name" placeholder="收货人的名称"><br>
+            &nbsp;<br>
+            收货人的电话：<input type="text" name="recv_phone" placeholder="收货人的电话"><br>
+            &nbsp;<br>
+            <div style="position: relative;"><!-- container -->
+            收货人的地址：&nbsp;<br>
+                <input readonly name="provice" type="text" data-toggle="city-picker" placeholder="点击从下拉面板中选择省/市/区/县">
+            </div>
+            &nbsp;<br>
+            收货人详细地址：<input type="text" name="desc" placeholder="收货人的街道"><br>
+            &nbsp;<br>
+            是否默认地址:<input type="checkbox" name="is_default" value="true">
+            &nbsp;<br>
+            <input type="submit" value="添加地址">
+        </form>
+    </body>
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script src="http://www.jq22.com/jquery/bootstrap-3.3.4.js"></script>
+    <script src="https://huangchanghuan.github.io/city-picker/js/city-picker.data.js"></script>
+    <script src="/static/js/lib/js/city-picker.js"></script>
+    <script src="/static/js/lib/js/main.js"></script>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录</title>
+</head>
+<body>
+
+		<h1>用户登录</h1>
+
+    <h2>{{msg}}==={{error_code}}</h2>
+    <form action="{% url 'users:user_login' %}" method="post" >
+        {% csrf_token %}
+		<input type="text" class="text" name="username" placeholder="用户名" ><br>
+        <input type="hidden" name="next" value="{{next_url}}"><br>
+		<input type="password" name="password" placeholder="密码"><br>
+        <img src="/users/createImage/" alt="图片有问题" onclick="refresh_check_code(this)"><br>
+        <input type="text" name="ac" placeholder="验证码"><br>
+		<input type="submit" value="登录" >
+
+
+    </form>
+
+
+
+
+
+
+<script>
+     function refresh_check_code(node) {
+     // src 后面加问号会自动刷新验证码 img 的 src
+    // get 请求方式缓存处理
+     node.src = '/users/createImage/?search=' + Math.random();
+     }
+</script>
+</body>
+</html>
